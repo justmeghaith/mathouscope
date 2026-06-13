@@ -132,11 +132,9 @@ class Game:
         self.dropoff_group.add(self.dropoff)
 
     def handle_collisions(self):
-        # Pick up passenger
-        if (
-            not self.has_passenger
-            and pygame.sprite.spritecollideinside
-            and pygame.sprite.collide_rect(self.taxi, self.passenger)
+        # Pick up passenger - FIXED: Removed stray 'pygame.sprite.spritecollideinside'
+        if not self.has_passenger and pygame.sprite.collide_rect(
+            self.taxi, self.passenger
         ):
             self.has_passenger = True
             self.passenger_group.empty()
